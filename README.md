@@ -1,0 +1,1 @@
+This is a Library application that allows you to add Books into a library along with information like book title, author, total pages, pages read, and book read.
