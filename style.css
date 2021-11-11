@@ -128,6 +128,61 @@ input:focus {
     cursor: pointer;
 }
 
+#library {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .book-card {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 240px;
+    height: 320px;
+    border: 2px solid black;
+    text-align: center;
+    border-radius: 32px;
+}
+
+.book-card-top {
+    padding: 30px 10px 0 10px;
+    border-radius: 32px 32px 0 0;
+}
+
+.book-card-bottom {
+    padding: 40px 10px 60px 10px;
+    border-radius: 0 0 32px 32px;
+    background-color: orange;
+}
+
+.book-card-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.book-card-by {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.book-card-author {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.book-card-pages-fraction {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    background-color: transparent;
     
+}
+
+.book-card-pages-fraction-label {
+    font-size: 16px;
+    font-weight: normal;
+    background-color: transparent;
 }
