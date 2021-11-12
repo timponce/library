@@ -34,21 +34,21 @@
             <div id="book-entry-compact">
                 <div class="input-field-compact" id="title-compact">
                     <div>Title</div>
-                    <input type="text" name="book-title" placeholder="Dune">
+                    <input type="text" id="title-input-compact" name="book-title" placeholder="Dune">
                 </div>
                 <div class="input-field-compact" id="author-compact">
                     <div>Author</div>
-                    <input type="text" name="book-author" placeholder="Frank Herbert">
+                    <input type="text" id="author-input-compact" name="book-author" placeholder="Frank Herbert">
                 </div>
                 <div class="input-field-compact" id="pages-compact">
                     <div>Pages</div>
-                    <input type="text" name="book-pages" placeholder="617">
+                    <input type="text" id="pages-input-compact" name="book-pages" placeholder="617">
                 </div>
                 <div class="input-field-compact" id="pages-read-compact">
                     <div>Pages Read</div>
-                    <input type="text" name="pages-read" placeholder="617">
+                    <input type="text" id="pages-read-input-compact" name="pages-read" placeholder="617">
                 </div>
-                <button class="entry-button-compact">+</button>
+                <button class="entry-button-compact" onclick="addNewBookCompact()">+</button>
             </div>
             <div id="library">
                 <div class="book-card">

@@ -9,6 +9,11 @@ let author = document.getElementById('author-input');
 let pages = document.getElementById('pages-input');
 let pagesRead = document.getElementById('pages-read-input');
 
+let titleCompact = document.getElementById('title-input-compact');
+let authorCompact = document.getElementById('author-input-compact');
+let pagesCompact = document.getElementById('pages-input-compact');
+let pagesReadCompact = document.getElementById('pages-read-input-compact');
+
 let myLibrary = [];
 
 function Book(title, author, pages, pagesRead) {
@@ -25,6 +30,16 @@ function addNewBook() {
     author.value = '';
     pages.value = '';
     pagesRead.value = '';
+    addBookToLibrary(book);
+    displayLibrary();
+}
+
+function addNewBookCompact() {
+    let book = new Book(titleCompact.value, authorCompact.value, pagesCompact.value, pagesReadCompact.value);
+    titleCompact.value = '';
+    authorCompact.value = '';
+    pagesCompact.value = '';
+    pagesReadCompact.value = '';
     addBookToLibrary(book);
     displayLibrary();
 }
@@ -74,6 +89,14 @@ function createBookCard(i) {
         bookCardPagesFractionLabel.classList.add('book-card-pages-fraction-label');
         bookCardBottom.appendChild(bookCardPagesFractionLabel);
 }
+
+if (window.innerWidth < 900) {
+    bookEntry.style.display = 'none';
+    bookEntryCompact.style.display = 'flex';
+} else if (window.innerWidth >= 900) {
+    bookEntry.style.display = 'flex';
+    bookEntryCompact.style.display = 'none';
+};
 
 window.addEventListener('resize', function() {
     if (window.innerWidth < 900) {
