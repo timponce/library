@@ -26,7 +26,13 @@ function Book(title, author, pages, pagesRead) {
 };
 
 function addNewBook() {
-    if (title.value != '' && author.value != '' && pages.value != '' && pagesRead.value != '') {
+    if (title.value == '' || author.value == '' || pages.value == '' || pagesRead.value == '') {
+        errorMsg.innerHTML = 'Please fill out all fields.';
+    } else if (isNaN(pages.value) || isNaN(pagesRead.value)) {
+        errorMsg.innerHTML = 'Pages and Pages Read must be numbers.';
+    } else if (+pages.value < +pagesRead.value) {
+        errorMsg.innerHTML = 'Pages Read must be less than Pages.';
+    } else if (title.value != '' && author.value != '' && pages.value != '' && pagesRead.value != '') {
     let book = new Book(title.value, author.value, pages.value, pagesRead.value);
     title.value = '';
     author.value = '';
@@ -35,9 +41,6 @@ function addNewBook() {
     addBookToLibrary(book);
     displayLibrary();
     errorMsg.innerHTML = '';
-    } else {
-        errorMsg.innerHTML = 'Please fill out all fields.';
-        console.log('error');
     }
 };
 
