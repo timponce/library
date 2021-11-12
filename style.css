@@ -150,12 +150,16 @@ input:focus {
 .book-card-top {
     padding: 30px 10px 0 10px;
     border-radius: 32px 32px 0 0;
+    flex: 0 0 auto;
+    height: 180px;
 }
 
-#book-card-bottom {
+.book-card-bottom {
     padding: 40px 10px 60px 10px;
     border-radius: 0 0 30px 30px;
     background-color: orange;
+    flex: 0 0 auto;
+    height: 120px;
 }
 
 .book-card-title {

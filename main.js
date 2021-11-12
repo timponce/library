@@ -4,12 +4,11 @@ let library = document.getElementById('library');
 
 let myLibrary = [];
 
-function Book(title, author, pages, pagesRead, read) {
+function Book(title, author, pages, pagesRead) {
     this.title = title
     this.author = author
     this.pages = pages
     this.pagesRead = pagesRead
-    this.read = read
     Book.prototype = Object.create(myLibrary)
 };
 
@@ -19,39 +18,40 @@ function addBookToLibrary(book) {
 
 function displayLibrary() {
 for (let i=0; i < myLibrary.length; i++) {
-    const newDiv = document.createElement('div');
-    const newContent = document.createTextNode('Title: ' + myLibrary[i].title + ' ')
-    newDiv.appendChild(newContent);
-    document.body.appendChild(newDiv);
-    console.log('success');
+    createBookCard(i)
 }
 };
 
-function createBookCard() {
+function createBookCard(i) {
     let bookCard = document.createElement('div')
-    bookCard.classList.add('book-card');
-    library.appendChild(bookCard);
+        bookCard.classList.add('book-card');
+        library.appendChild(bookCard);
     let bookCardTop = document.createElement('div');
-    bookCardTop.classList.add('book-card-top');
-    bookCard.appendChild(bookCardTop);
+        bookCardTop.classList.add('book-card-top');
+        bookCard.appendChild(bookCardTop);
     let bookCardBottom = document.createElement('div');
-    bookCardBottom.classList.add('book-card-bottom');
-    bookCard.appendChild(bookCardBottom);
+        bookCardBottom.classList.add('book-card-bottom');
+        bookCard.appendChild(bookCardBottom);
     let bookCardTitle = document.createElement('div');
-    bookCardTitle.classList.add('book-card-title');
-    bookCardTop.appendChild(bookCardTitle)
+        bookCardTitle.innerHTML = myLibrary[i].title;
+        bookCardTitle.classList.add('book-card-title');
+        bookCardTop.appendChild(bookCardTitle)
     let bookCardBy = document.createElement('div');
-    bookCardBy.classList.add('book-card-by');
-    bookCardTop.appendChild(bookCardBy)
+        bookCardBy.innerHTML = 'by';
+        bookCardBy.classList.add('book-card-by');
+        bookCardTop.appendChild(bookCardBy)
     let bookCardAuthor = document.createElement('div');
-    bookCardAuthor.classList.add('book-card-author');
-    bookCardTop.appendChild(bookCardAuthor)
+        bookCardAuthor.innerHTML = myLibrary[i].author;
+        bookCardAuthor.classList.add('book-card-author');
+        bookCardTop.appendChild(bookCardAuthor)
     let bookCardPagesFraction = document.createElement('div');
-    bookCardPagesFraction.classList.add('book-card-pages-fraction');
-    bookCardBottom.appendChild(bookCardPagesFraction);
+        bookCardPagesFraction.innerHTML = myLibrary[i].pages + '/' + myLibrary[i].pagesRead;
+        bookCardPagesFraction.classList.add('book-card-pages-fraction');
+        bookCardBottom.appendChild(bookCardPagesFraction);
     let bookCardPagesFractionLabel = document.createElement('div');
-    bookCardPagesFractionLabel.classList.add('book-card-pages-fraction-label');
-    bookCardBottom.appendChild(bookCardPagesFractionLabel);
+        bookCardPagesFractionLabel.innerHTML = 'pages read';
+        bookCardPagesFractionLabel.classList.add('book-card-pages-fraction-label');
+        bookCardBottom.appendChild(bookCardPagesFractionLabel);
 }
 
 window.addEventListener('resize', function() {
@@ -65,9 +65,9 @@ window.addEventListener('resize', function() {
 });
 
 //Manually entered placeholder books to have content for formatting.
-let book1 = new Book('Dune', 'Frank Herbet', '896', '896', 'Read');
-let book2 = new Book('Children of Dune', 'Frank Herbert', '745', '0', 'Not read');
-let book3 = new Book('Breakfast of Champions', 'Kurt Vonnegut', '323', '323', 'Read');
+let book1 = new Book('Dune', 'Frank Herbet', '896', '896');
+let book2 = new Book('Children of Dune', 'Frank Herbert', '745', '0');
+let book3 = new Book('Breakfast of Champions', 'Kurt Vonnegut', '323', '323');
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);
