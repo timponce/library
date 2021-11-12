@@ -1,5 +1,6 @@
 let bookEntry = document.getElementById('book-entry');
 let bookEntryCompact = document.getElementById('book-entry-compact');
+let library = document.getElementById('library');
 
 let myLibrary = [];
 
@@ -25,6 +26,33 @@ for (let i=0; i < myLibrary.length; i++) {
     console.log('success');
 }
 };
+
+function createBookCard() {
+    let bookCard = document.createElement('div')
+    bookCard.classList.add('book-card');
+    library.appendChild(bookCard);
+    let bookCardTop = document.createElement('div');
+    bookCardTop.classList.add('book-card-top');
+    bookCard.appendChild(bookCardTop);
+    let bookCardBottom = document.createElement('div');
+    bookCardBottom.classList.add('book-card-bottom');
+    bookCard.appendChild(bookCardBottom);
+    let bookCardTitle = document.createElement('div');
+    bookCardTitle.classList.add('book-card-title');
+    bookCardTop.appendChild(bookCardTitle)
+    let bookCardBy = document.createElement('div');
+    bookCardBy.classList.add('book-card-by');
+    bookCardTop.appendChild(bookCardBy)
+    let bookCardAuthor = document.createElement('div');
+    bookCardAuthor.classList.add('book-card-author');
+    bookCardTop.appendChild(bookCardAuthor)
+    let bookCardPagesFraction = document.createElement('div');
+    bookCardPagesFraction.classList.add('book-card-pages-fraction');
+    bookCardBottom.appendChild(bookCardPagesFraction);
+    let bookCardPagesFractionLabel = document.createElement('div');
+    bookCardPagesFractionLabel.classList.add('book-card-pages-fraction-label');
+    bookCardBottom.appendChild(bookCardPagesFractionLabel);
+}
 
 window.addEventListener('resize', function() {
     if (window.innerWidth < 900) {

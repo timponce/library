@@ -131,6 +131,8 @@ input:focus {
 #library {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 40px;
 }
 
 .book-card {
@@ -150,9 +152,9 @@ input:focus {
     border-radius: 32px 32px 0 0;
 }
 
-.book-card-bottom {
+#book-card-bottom {
     padding: 40px 10px 60px 10px;
-    border-radius: 0 0 32px 32px;
+    border-radius: 0 0 30px 30px;
     background-color: orange;
 }
 
@@ -178,11 +180,12 @@ input:focus {
     font-weight: bold;
     margin-bottom: 5px;
     background-color: transparent;
-    
+    color: black;  
 }
 
 .book-card-pages-fraction-label {
     font-size: 16px;
     font-weight: normal;
     background-color: transparent;
+    color: black;
 }
