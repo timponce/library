@@ -209,6 +209,25 @@ input:focus {
     margin-top: 5px;
 }
 
+.book-card-pages-container {
+    background-color: transparent;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.book-pages-decrement,
+.book-pages-increment {
+    background-color: transparent;
+    border-style: none;
+    font-size: 28px;
+    margin-top: -5px;
+}
+
+.book-pages-decrement:hover,
+.book-pages-increment:hover {
+    cursor: pointer;
+}
+
 .book-card-pages-fraction {
     font-size: 20px;
     font-weight: bold;

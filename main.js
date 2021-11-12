@@ -63,6 +63,20 @@ function removeBookFromLibrary(a) {
     displayLibrary();
 }
 
+function pageDecrement(a) {
+    if (+myLibrary[a].pagesRead > 0) {
+        myLibrary[a].pagesRead = --myLibrary[a].pagesRead;
+        displayLibrary();
+    }
+}
+
+function pageIncrement(a) {
+    if (+myLibrary[a].pagesRead < +myLibrary[a].pages) {
+        myLibrary[a].pagesRead = ++myLibrary[a].pagesRead;
+        displayLibrary();
+    }
+}
+
 function displayLibrary() {
 library.remove();
 library = document.createElement('div');
@@ -76,12 +90,12 @@ for (let i=0; i < myLibrary.length; i++) {
 function createBookCard(i) {
     let bookCard = document.createElement('div');
         bookCard.classList.add('book-card');
-        bookCard.setAttribute('data-book-number', i);
+        bookCard.setAttribute('data-number', i);
         library.appendChild(bookCard);
     let bookCardRemoveBtn = document.createElement('button');
         bookCardRemoveBtn.innerHTML = 'x';
         bookCardRemoveBtn.classList.add('remove-book-btn');
-        bookCardRemoveBtn.setAttribute('data-book-number', i);
+        bookCardRemoveBtn.setAttribute('data-number', i);
         bookCardRemoveBtn.setAttribute('onclick', 'removeBookFromLibrary()');
         bookCard.appendChild(bookCardRemoveBtn)
     let bookCardTop = document.createElement('div');
@@ -102,10 +116,25 @@ function createBookCard(i) {
         bookCardAuthor.innerHTML = myLibrary[i].author;
         bookCardAuthor.classList.add('book-card-author');
         bookCardTop.appendChild(bookCardAuthor)
+    let bookCardPagesContainer = document.createElement('div');
+        bookCardPagesContainer.classList.add('book-card-pages-container');
+        bookCardBottom.appendChild(bookCardPagesContainer);
+    let bookPagesBtnMinus = document.createElement('button');
+        bookPagesBtnMinus.innerHTML = '-';
+        bookPagesBtnMinus.classList.add('book-pages-decrement');
+        bookPagesBtnMinus.setAttribute('onclick', 'pageDecrement('+i+')');
+        bookPagesBtnMinus.setAttribute('data-number', i);
+        bookCardPagesContainer.appendChild(bookPagesBtnMinus);
     let bookCardPagesFraction = document.createElement('div');
         bookCardPagesFraction.innerHTML = myLibrary[i].pagesRead + '/' + myLibrary[i].pages;
         bookCardPagesFraction.classList.add('book-card-pages-fraction');
-        bookCardBottom.appendChild(bookCardPagesFraction);
+        bookCardPagesContainer.appendChild(bookCardPagesFraction);
+    let bookPagesBtnPlus = document.createElement('button');
+        bookPagesBtnPlus.innerHTML = '+';
+        bookPagesBtnPlus.classList.add('book-pages-increment');
+        bookPagesBtnPlus.setAttribute('onclick', 'pageIncrement('+i+')');
+        bookPagesBtnPlus.setAttribute('data-number', i);
+        bookCardPagesContainer.appendChild(bookPagesBtnPlus);
     let bookCardPagesFractionLabel = document.createElement('div');
         bookCardPagesFractionLabel.innerHTML = 'pages read';
         bookCardPagesFractionLabel.classList.add('book-card-pages-fraction-label');
