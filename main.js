@@ -1,6 +1,13 @@
 let bookEntry = document.getElementById('book-entry');
 let bookEntryCompact = document.getElementById('book-entry-compact');
+let main = document.getElementById('main');
 let library = document.getElementById('library');
+let bookCard = document.querySelectorAll('book-card');
+
+let title = document.getElementById('title-input');
+let author = document.getElementById('author-input');
+let pages = document.getElementById('pages-input');
+let pagesRead = document.getElementById('pages-read-input');
 
 let myLibrary = [];
 
@@ -12,18 +19,32 @@ function Book(title, author, pages, pagesRead) {
     Book.prototype = Object.create(myLibrary)
 };
 
-function addBookToLibrary(book) {
-    myLibrary.push(book);
+function addNewBook() {
+    let book = new Book(title.value, author.value, pages.value, pagesRead.value);
+    title.value = '';
+    author.value = '';
+    pages.value = '';
+    pagesRead.value = '';
+    addBookToLibrary(book);
+    displayLibrary();
+}
+
+function addBookToLibrary(element) {
+    myLibrary.push(element);
 };
 
 function displayLibrary() {
+library.remove();
+library = document.createElement('div');
+library.id = 'library';
+main.appendChild(library);
 for (let i=0; i < myLibrary.length; i++) {
     createBookCard(i)
 }
 };
 
 function createBookCard(i) {
-    let bookCard = document.createElement('div')
+    let bookCard = document.createElement('div');
         bookCard.classList.add('book-card');
         library.appendChild(bookCard);
     let bookCardTop = document.createElement('div');
@@ -45,7 +66,7 @@ function createBookCard(i) {
         bookCardAuthor.classList.add('book-card-author');
         bookCardTop.appendChild(bookCardAuthor)
     let bookCardPagesFraction = document.createElement('div');
-        bookCardPagesFraction.innerHTML = myLibrary[i].pages + '/' + myLibrary[i].pagesRead;
+        bookCardPagesFraction.innerHTML = myLibrary[i].pagesRead + '/' + myLibrary[i].pages;
         bookCardPagesFraction.classList.add('book-card-pages-fraction');
         bookCardBottom.appendChild(bookCardPagesFraction);
     let bookCardPagesFractionLabel = document.createElement('div');
@@ -65,10 +86,10 @@ window.addEventListener('resize', function() {
 });
 
 //Manually entered placeholder books to have content for formatting.
-let book1 = new Book('Dune', 'Frank Herbet', '896', '896');
-let book2 = new Book('Children of Dune', 'Frank Herbert', '745', '0');
-let book3 = new Book('Breakfast of Champions', 'Kurt Vonnegut', '323', '323');
+// let book1 = new Book('Dune', 'Frank Herbet', '896', '896');
+// let book2 = new Book('Children of Dune', 'Frank Herbert', '745', '0');
+// let book3 = new Book('Breakfast of Champions', 'Kurt Vonnegut', '323', '323');
 
-addBookToLibrary(book1);
-addBookToLibrary(book2);
-addBookToLibrary(book3);
+// addBookToLibrary(book1);
+// addBookToLibrary(book2);
+// addBookToLibrary(book3);
