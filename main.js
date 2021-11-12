@@ -55,6 +55,11 @@ function addBookToLibrary(element) {
     myLibrary.push(element);
 };
 
+function removeBookFromLibrary(a) {
+    myLibrary.splice(a, 1);
+    displayLibrary();
+}
+
 function displayLibrary() {
 library.remove();
 library = document.createElement('div');
@@ -68,8 +73,13 @@ for (let i=0; i < myLibrary.length; i++) {
 function createBookCard(i) {
     let bookCard = document.createElement('div');
         bookCard.classList.add('book-card');
-        bookCard.setAttribute('data-book-number', i)
+        bookCard.setAttribute('data-book-number', i);
         library.appendChild(bookCard);
+    let bookCardRemoveBtn = document.createElement('button');
+        bookCardRemoveBtn.innerHTML = 'x';
+        bookCardRemoveBtn.classList.add('remove-book-btn');
+        bookCardRemoveBtn.setAttribute('data-book-number', i);
+        bookCard.appendChild(bookCardRemoveBtn)
     let bookCardTop = document.createElement('div');
         bookCardTop.classList.add('book-card-top');
         bookCard.appendChild(bookCardTop);

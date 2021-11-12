@@ -156,11 +156,32 @@ input:focus {
     border-radius: 32px;
 }
 
+.remove-book-btn {
+    flex: 0 0 auto;
+    align-self: flex-end;
+    background-color: red;
+    font-size: 18px;
+    height: 30px;
+    width: 30px;
+    margin-top: -5px;
+    margin-right: -5px;
+    border-style: none;
+    border-radius: 32px;
+    transition: 0.25s;
+}
+
+.remove-book-btn:hover {
+    cursor: pointer;
+    color: white;
+}
+
 .book-card-top {
+    margin-top: -20px;
     padding: 30px 10px 0 10px;
     border-radius: 32px 32px 0 0;
     flex: 0 0 auto;
     height: 180px;
+    background-color: transparent;
 }
 
 .book-card-bottom {
