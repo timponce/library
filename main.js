@@ -3,6 +3,7 @@ let bookEntryCompact = document.getElementById('book-entry-compact');
 let main = document.getElementById('main');
 let library = document.getElementById('library');
 let bookCard = document.querySelectorAll('book-card');
+let errorMsg = document.getElementById('error-msg');
 
 let title = document.getElementById('title-input');
 let author = document.getElementById('author-input');
@@ -25,6 +26,7 @@ function Book(title, author, pages, pagesRead) {
 };
 
 function addNewBook() {
+    if (title.value != '' && author.value != '' && pages.value != '' && pagesRead.value != '') {
     let book = new Book(title.value, author.value, pages.value, pagesRead.value);
     title.value = '';
     author.value = '';
@@ -32,7 +34,12 @@ function addNewBook() {
     pagesRead.value = '';
     addBookToLibrary(book);
     displayLibrary();
-}
+    errorMsg.innerHTML = '';
+    } else {
+        errorMsg.innerHTML = 'Please fill out all fields.';
+        console.log('error');
+    }
+};
 
 function addNewBookCompact() {
     let book = new Book(titleCompact.value, authorCompact.value, pagesCompact.value, pagesReadCompact.value);
@@ -61,6 +68,7 @@ for (let i=0; i < myLibrary.length; i++) {
 function createBookCard(i) {
     let bookCard = document.createElement('div');
         bookCard.classList.add('book-card');
+        bookCard.setAttribute('data-book-number', i)
         library.appendChild(bookCard);
     let bookCardTop = document.createElement('div');
         bookCardTop.classList.add('book-card-top');
