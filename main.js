@@ -79,6 +79,7 @@ function createBookCard(i) {
         bookCardRemoveBtn.innerHTML = 'x';
         bookCardRemoveBtn.classList.add('remove-book-btn');
         bookCardRemoveBtn.setAttribute('data-book-number', i);
+        bookCardRemoveBtn.setAttribute('onclick', 'removeBookFromLibrary()');
         bookCard.appendChild(bookCardRemoveBtn)
     let bookCardTop = document.createElement('div');
         bookCardTop.classList.add('book-card-top');
@@ -125,12 +126,3 @@ window.addEventListener('resize', function() {
         bookEntryCompact.style.display = 'none';
     }
 });
-
-//Manually entered placeholder books to have content for formatting.
-// let book1 = new Book('Dune', 'Frank Herbet', '896', '896');
-// let book2 = new Book('Children of Dune', 'Frank Herbert', '745', '0');
-// let book3 = new Book('Breakfast of Champions', 'Kurt Vonnegut', '323', '323');
-
-// addBookToLibrary(book1);
-// addBookToLibrary(book2);
-// addBookToLibrary(book3);
