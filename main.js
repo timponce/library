@@ -17,13 +17,22 @@ let pagesReadCompact = document.getElementById('pages-read-input-compact');
 
 let myLibrary = [];
 
-function Book(title, author, pages, pagesRead) {
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.pagesRead = pagesRead
-    Book.prototype = Object.create(myLibrary)
-};
+class Book {
+    constructor(title, author, pages, pagesRead) {
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.pagesRead = pagesRead
+    }
+}
+//Refactor below using class.
+
+// function Book(title, author, pages, pagesRead) {
+//     this.title = title
+//     this.author = author
+//     this.pages = pages
+//     this.pagesRead = pagesRead
+// };
 
 function addNewBook() {
     if (title.value == '' || author.value == '' || pages.value == '' || pagesRead.value == '') {
